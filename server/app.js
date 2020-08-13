@@ -1,8 +1,16 @@
 const express = require('express')
 const app = express()
-const port = 3000;
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema');
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+app.use(express.json())
+
+mongoose.connect(`mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds011495.mlab.com:11495/gql-test`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log('db connected')).catch((err) => console.log(err.message))
 
 app.get('/', (req, res) => {
     res.json({
@@ -15,6 +23,6 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-app.listen(port, () => {
-    console.log(`server is up and running on port ${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`server is up and running on port ${process.env.PORT}`)
 })
