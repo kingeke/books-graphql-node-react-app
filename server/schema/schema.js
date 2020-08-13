@@ -1,6 +1,6 @@
 const graphql = require('graphql')
-const AuthorQuery = require('./query/AuthorQuery')
-const BookQuery = require('./query/BookQuery')
+const AuthorQuery = require('./queries/AuthorQuery')
+const BookQuery = require('./queries/BookQuery')
 
 const query = {}
 const types = {}
