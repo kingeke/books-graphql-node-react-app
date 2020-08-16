@@ -2,11 +2,14 @@ const {
     GraphQLNonNull,
     GraphQLString,
     GraphQLID,
+    GraphQLBoolean,
+    Graph
 } = require("graphql")
 const BookController = require("../../controllers/BookController")
 
 module.exports = (types) => ({
-    addBook: {
+
+    createBook: {
         type: types.BookType,
         args: {
             name: {
@@ -29,6 +32,19 @@ module.exports = (types) => ({
         },
         resolve(parent, { name, genre, description, author_id }) {
             return BookController.store(name, genre, description, author_id)
+        }
+    },
+
+    deleteBook: {
+        type: types.BookType,
+        args: {
+            id: {
+                type: new GraphQLNonNull(GraphQLID),
+                description: "The book ID"
+            }
+        },
+        resolve(parent, { id }) {
+            return BookController.destroy(id)
         }
     }
 })

@@ -6,7 +6,7 @@ const {
 } = require("graphql")
 
 module.exports = (types) => ({
-    addAuthor: {
+    createAuthor: {
         type: types.AuthorType,
         args: {
             name: {

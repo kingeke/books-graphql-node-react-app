@@ -1,0 +1,14 @@
+body {
+    background: #eee;
+    font-family: sans-serif;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.create-button {
+    left: 20px;
+    bottom: 20px;
+    z-index: 100;
+}
