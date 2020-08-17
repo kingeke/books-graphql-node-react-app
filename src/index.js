@@ -10,6 +10,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 })
 
+console.log(process.env.REACT_APP_ENDPOINT_URL)
 
 ReactDOM.render(
     <React.StrictMode>
