@@ -25,8 +25,8 @@ function ViewBook({ id, data: { loading, book, error }, setBook }) {
     if (book) {
         return (
             <div id="book-details">
-                <h3>{book.name}</h3>
-                <span className="badge badge-info mb-2">{book.genre}</span> <br />
+                <h3 className="text-capitalize">{book.name}</h3>
+                <span className="badge badge-info mb-2 text-capitalize">{book.genre}</span> <br />
                 <small>Description</small>
                 <p>{book.description}</p>
                 <small>Author</small>
@@ -40,7 +40,7 @@ function ViewBook({ id, data: { loading, book, error }, setBook }) {
                         <ul>
                             {
                                 book.author.books && book.author.books.filter(book => book.id !== id).map(book => (
-                                    <li className="pointer" onClick={() => setBook(book.id)} key={book.id}>{book.name}</li>
+                                    <li className="pointer text-capitalize" onClick={() => setBook(book.id)} key={book.id}>{book.name}</li>
                                 ))
                             }
                         </ul>
@@ -49,7 +49,6 @@ function ViewBook({ id, data: { loading, book, error }, setBook }) {
                 <button
                     className="btn btn-sm btn-outline-danger"
                     onClick={() => {
-                        console.log(id);
                         delete_book({ variables: { id } });
                         setBook(null);
                     }}

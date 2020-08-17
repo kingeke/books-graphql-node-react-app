@@ -42,7 +42,6 @@ class CreateBook extends Component {
                 }
             ).catch(err => {
                 this.setState({ formSubmitting: false })
-                console.log(err.message)
             })
         })
     }
@@ -67,13 +66,13 @@ class CreateBook extends Component {
 
         return (
             <Fragment>
-                <button
-                    onClick={this.handleModal}
-                    className="btn btn-info border rounded-circle shadow position-fixed create-button pointer"
-                >
-                    <h3 className="m-0 p-3">+</h3>
-                </button>
-
+                {
+                    authors.length > 0 &&
+                    <span className="fa-stack fa-2x pointer" onClick={this.handleModal}>
+                        <i className="fas fa-circle fa-stack-2x text-info"></i>
+                        <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
+                    </span>
+                }
                 <Modal show={showModal} onHide={this.handleModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Create Book</Modal.Title>
@@ -112,6 +111,7 @@ class CreateBook extends Component {
                                     <Form.Control
                                         as="textarea"
                                         name="description"
+                                        maxLength="1500"
                                         value={description}
                                         onChange={this.handleChange}
                                         required
@@ -142,7 +142,7 @@ class CreateBook extends Component {
                             </Form.Group>
                             <Form.Group>
                                 <Button block variant="primary" type="submit" disabled={formSubmitting}>
-                                    {formSubmitting ? 'Loading...' : 'Add'}
+                                    {formSubmitting ? 'Loading...' : 'Create'}
                                 </Button>
                             </Form.Group>
                         </Form>

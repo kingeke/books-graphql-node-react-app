@@ -7,8 +7,8 @@ body {
     cursor: pointer;
 }
 
-.create-button {
-    left: 20px;
+.create-actions{
     bottom: 20px;
-    z-index: 100;
+    left: 20px;
+    z-index: 200;
 }

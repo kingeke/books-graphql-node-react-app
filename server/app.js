@@ -5,18 +5,17 @@ const schema = require('./schema/schema');
 const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv').config()
-
-app.use(express.json())
+const port = process.env.PORT || 8000
 app.use(cors())
 
-mongoose.connect(`mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds011495.mlab.com:11495/gql-test`, {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('db connected')).catch((err) => console.log(err.message))
 
 app.get('/', (req, res) => {
     res.json({
-        status: 'hey'
+        status: 'Welcome, visit /graphql to view the api docs.'
     })
 })
 
@@ -25,6 +24,6 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-app.listen(process.env.PORT, () => {
-    console.log(`server is up and running on port ${process.env.PORT}`)
+app.listen(port, () => {
+    console.log(`server is up and running on port ${port}`)
 })

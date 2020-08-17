@@ -32,7 +32,7 @@ function ViewBooks({
                             <div className="col-md-6 my-2 pointer" key={book.id}>
                                 <div
                                     onClick={() => setBook(book.id)}
-                                    className={`border p-3 rounded text-center shadow text-${color} border-${color}`}
+                                    className={`border p-3 rounded text-center shadow text-${color} border-${color} text-capitalize`}
                                 >
                                     {book.name}
                                 </div>
