@@ -1,0 +1,14 @@
+body {
+    background: #eee;
+    font-family: sans-serif;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.create-actions{
+    bottom: 20px;
+    left: 20px;
+    z-index: 200;
+}
