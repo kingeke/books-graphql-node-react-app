@@ -10,8 +10,6 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 })
 
-console.log(process.env.REACT_APP_ENDPOINT_URL)
-console.log('update')
 ReactDOM.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
